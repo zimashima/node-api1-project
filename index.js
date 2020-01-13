@@ -1,11 +1,12 @@
 // implement your API here
 const express = require('express')
-
+const cors = require('cors')
 const server = express();
 
 const Users = require('./data/db.js')
 
 server.use(express.json())
+server.use(cors())
 
 server.get("/", (req, res) => {
     res.send({
@@ -75,7 +76,6 @@ server.delete('/api/users/:id', (req, res) => {
         if ( user  === undefined ){
           res.status(404).json({ message: "The user with the specified ID does not exist." })
         } else {
-          // setTimeout(()=> {res.status(500).json({ errorMessage: "The user could not be removed" })}, 3000)
           Users.remove(id)
             .then( num => res.status(200).json({ message: `DELETE ID:${id} SUCCESS` }))
         }
