@@ -56,7 +56,6 @@ server.post('/api/users', (req, res) => {
         res.status(201).json(user);
       })
       .catch(error => {
-        console.log(error);
         res.status(500).json({
           errorMessage: "There was an error while saving the user to the database",
         });
@@ -74,7 +73,6 @@ server.delete('/api/users/:id', (req, res) => {
     Users.findById(id)
       .then( user => {
         if ( user  === undefined ){
-          console.log(user)
           res.status(404).json({ message: "The user with the specified ID does not exist." })
         } else {
           // setTimeout(()=> {res.status(500).json({ errorMessage: "The user could not be removed" })}, 3000)
@@ -96,7 +94,6 @@ server.put('/api/users/:id', (req,res)=>{
   Users.findById(id)
     .then( user => {
       if ( user  === undefined ){
-        console.log(user)
         res.status(404).json({ message: "The user with the specified ID does not exist." })
       } else {
         
@@ -110,7 +107,6 @@ server.put('/api/users/:id', (req,res)=>{
             res.status(200).json(updateStatus);
           })
           .catch(error => {
-            console.log(error);
             res.status(500).json({
               errorMessage: "The user information could not be modified.",
             });
