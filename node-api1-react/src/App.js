@@ -20,7 +20,7 @@ function App() {
     <div className="container-md m-5 mx-auto">
 
       <h1 className="text-primary">This is the cutest List Ever!</h1>
-      <Form setUsers={setUsers}/>
+      <Form setUsers={setUsers} users={users}/>
       <CardList users={users}/>
     </div>
   );
